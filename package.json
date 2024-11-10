@@ -1,0 +1,62 @@
+{
+  "name": "project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "src/main.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder",
+    "build:linux": "vite build && electron-builder build --linux",
+    "build:deb": "vite build && electron-builder build --linux deb",
+    "build:appimage": "vite build && electron-builder build --linux AppImage",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "node-notifier": "^10.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "electron": "^29.4.6",
+    "electron-builder": "^24.13.3",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "vite": "^5.4.10"
+  },
+  "build": {
+    "appId": "com.notion.calendar.desktop",
+    "productName": "Notion Calendar",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Office",
+      "icon": "build/icons",
+      "desktop": {
+        "Name": "Notion Calendar",
+        "Comment": "Desktop application for Notion Calendar",
+        "Categories": "Office;Calendar;",
+        "Type": "Application"
+      }
+    }
+  }
+}
